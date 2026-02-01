@@ -7,8 +7,7 @@ class mInscripcion extends Conexion{
     public function obtenerDeportes(){
         try{
             $sql="SELECT * FROM Deportes";
-            $stmt=$this->conexion->prepare($sql);
-            $stmt->execute();
+            $stmt=$this->conexion->query($sql);
             $deportes=$stmt->fetchAll(PDO::FETCH_ASSOC);
             return $deportes;
         }catch (PDOException $e){
@@ -76,8 +75,7 @@ class mInscripcion extends Conexion{
                 FROM Usuarios_deportes
                 INNER JOIN  Deportes ON Usuarios_deportes.idDeporte=Deportes.idDeporte
                 INNER JOIN Usuarios on Usuarios_deportes.idUsuario=Usuarios.idUsuario;";
-            $stmt=$this->conexion->prepare($sql);
-            $stmt->execute();
+            $stmt=$this->conexion->query($sql);
             $inscripciones=$stmt->fetchAll(PDO::FETCH_ASSOC);
             return $inscripciones;
         }catch (PDOException $e){
@@ -90,10 +88,9 @@ class mInscripcion extends Conexion{
         try{
             $sql="SELECT COUNT(DISTINCT idDeporte) as TotalDeporte
                     FROM Usuarios_deportes;";
-            $stmt=$this->conexion->prepare($sql);
-            $stmt->execute();
+            $stmt=$this->conexion->query($sql);
             $total=$stmt->fetch(PDO::FETCH_ASSOC);
-            return $total;;
+            return $total;
             }catch (PDOException $e){
                 return "Error : ".$e->getMessage();
         }
@@ -105,8 +102,7 @@ class mInscripcion extends Conexion{
         FROM Deportes 
     inner join Usuarios_deportes on Deportes.idDeporte=Usuarios_deportes.idDeporte
     GROUP BY Deportes.idDeporte;";
-            $stmt=$this->conexion->prepare($sql);
-            $stmt->execute();
+            $stmt=$this->conexion->query($sql);
             $totalUsuarios=$stmt->fetchAll(PDO::FETCH_ASSOC);
             return $totalUsuarios;
             }catch (PDOException $e){

@@ -20,7 +20,7 @@
 
         require_once $rutaControlador;
         $controlador = new $nombreControlador();
-
+        
         $datos = $controlador->$m();
         
         require_once $controlador->vista;

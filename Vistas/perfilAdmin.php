@@ -18,12 +18,7 @@
             <li><a href="index.php?c=Inscripcion&m=totalInscripcionesPorDeporte">Total Inscripciones por Deporte</a></li>
             <li><a href="index.php?c=Usuarios&m=cerrarSesion">Cerrar sesión</a></li>
         </ul>
+        <a href="index.php?c=Deportes&m=funcionListarDeportes">CRUD DE DEPORTES</a>
     </nav>
-    <main id="adminMain">
-        <section class="card">
-            <h3>Resumen</h3>
-            <p>Aquí puedes ver estadísticas y acciones de administración</p>
-        </section>
-    </main>
 </body>
 </html>

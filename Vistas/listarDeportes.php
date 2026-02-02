@@ -8,19 +8,6 @@
 </head>
 <body>
     <div class="card">
-    <h2>Lista de Deportes</h2>
-    <ul>
-        <?php
-            if(isset($datos) && is_array($datos)){
-                foreach($datos as $deporte){
-                    echo "<li>".$deporte['nombreDep']." - <img src=".RUTA_IMAGENES.$deporte['imagen']." > <a href='index.php?c=Deportes&m=vistaModificarDeporte&id=".$deporte['idDeporte']."'>Modificar</a></li>";
-                }
-            } else {
-                echo "<li>No hay deportes.</li>";
-            }
-        ?>
-    </ul>
-    <br><br><br>
     <h3>Aqui puedes añadir un deporte</h3>
     <form action="index.php?c=Deportes&m=funcionagregarDeporte" method="POST" enctype="multipart/form-data">  
             <label>Nombre:
@@ -31,6 +18,25 @@
             <button type="submit">Agregar Deporte</button>
 
     </form>
+    <br><br>
+    <h2>Lista de Deportes</h2>
+    <ul>
+        <?php
+            if(isset($datos) && is_array($datos)){
+                foreach($datos as $deporte){
+                    echo "<li>".$deporte['nombreDep'];
+                    if(isset($deporte['imagen']) && $deporte['imagen'] != ""){
+                        echo " - <img src=".RUTA_IMAGENES.$deporte['imagen']." >";
+                    }
+                    echo " <a href='index.php?c=Deportes&m=vistaModificarDeporte&id=".$deporte['idDeporte']."'>Modificar</a> - <a href='index.php?c=Deportes&m=borrarDeporte&id=".$deporte['idDeporte']."'>Eliminar</a></li>";
+                }
+            } else {
+                echo "<li>No hay deportes.</li>";
+            }
+        ?>
+    </ul>
+    <br>
+    <a href="index.php?c=Usuarios&m=volverPanelAdmin" class="link-button-back">Volver</a>
     </div>
 </body>
 </html>

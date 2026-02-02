@@ -11,7 +11,11 @@ class mInscripcion extends Conexion{
             $deportes=$stmt->fetchAll(PDO::FETCH_ASSOC);
             return $deportes;
         }catch (PDOException $e){
-            return "Error : ".$e->getMessage();
+             if($e->getCode() == 2002){
+                 return "Error de conexión con el servidor.";
+            }else{
+                 return "Error";
+            }
         }
     }
 
@@ -42,10 +46,12 @@ class mInscripcion extends Conexion{
                 }
                 return true;
             }catch (PDOException $e){
-                if($e->getCode()==23000){ // Si da el error 23000 es que ya existe el usuario (clave duplicada)
+                if($e->getCode()==23000){ 
                     return "El nombre de usuario ya existe";
+                }else if($e->getCode() == 2002){
+                 return "Error de conexión con el servidor.";
                 }else{
-                    return "Error:".$e->getMessage();
+                    return "Error";
                 }
             }
     }
@@ -60,10 +66,12 @@ class mInscripcion extends Conexion{
                 $stmt->execute();
                 return true;
             }catch (PDOException $e){
-                if($e->getCode()==23000){ // Si da error 23000 es que ya tiene este deporte asignado
+                if($e->getCode()==23000){ 
                    return "El nombre de usuario ya existe";
+                }else if($e->getCode() == 2002){
+                 return "Error de conexión con el servidor.";
                 }else{
-                   return "Error:".$e->getMessage();
+                   return "Error";
                 }
             }
     }
@@ -79,7 +87,11 @@ class mInscripcion extends Conexion{
             $inscripciones=$stmt->fetchAll(PDO::FETCH_ASSOC);
             return $inscripciones;
         }catch (PDOException $e){
-            return "Error : ".$e->getMessage();
+             if($e->getCode() == 2002){
+                 return "Error de conexión con el servidor.";
+            }else{
+                 return "Error";
+            }
         }
     }
 
@@ -92,7 +104,11 @@ class mInscripcion extends Conexion{
             $total=$stmt->fetch(PDO::FETCH_ASSOC);
             return $total;
             }catch (PDOException $e){
-                return "Error : ".$e->getMessage();
+             if($e->getCode() == 2002){
+                 return "Error de conexión con el servidor.";
+            }else{
+                 return "Error";
+            }
         }
     }
 
@@ -107,7 +123,11 @@ class mInscripcion extends Conexion{
             $totalUsuarios=$stmt->fetchAll(PDO::FETCH_ASSOC);
             return $totalUsuarios;
             }catch (PDOException $e){
-                return "Error : ".$e->getMessage();
+             if($e->getCode() == 2002){
+                 return "Error de conexión con el servidor.";
+            }else{
+                 return "Error";
+            }
             }
     }
 }

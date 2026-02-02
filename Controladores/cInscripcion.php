@@ -23,34 +23,49 @@ class cInscripcion {
         }
     }
 
+    private function validarUsuario(){
+        if(!isset($_POST['username']) || $_POST['username']==''){
+            return "El nombre de usuario es obligatorio.";
+        }
+        if(!isset($_POST['nombre_completo']) || $_POST['nombre_completo']==''){
+            return "El nombre completo es obligatorio.";
+        }
+        if(!isset($_POST['password']) || $_POST['password']==''){
+             return "La contraseña es obligatoria.";
+        }
+        if(!isset($_POST['email']) || $_POST['email']==''){
+             return "El email es obligatorio.";
+        }
+        if (!isset($_POST['deportes']) || empty($_POST['deportes'])) {
+             return "Debes seleccionar al menos un deporte.";
+        }
+         if(!isset($_POST['condiciones'])){
+             return "Error: Debes aceptar las condiciones.";
+         }
+         return true;
+    }
+
     public function registrarUsuario(){
-        if($_POST['username']=='' || $_POST['nombre_completo']=='' || $_POST['password']=='' || $_POST['email']==''){
-            $this->mensaje="Error: Los campos obligatorios no pueden estar vacíos.";
+        $validacion = $this->validarUsuario();
+        if($validacion !== true){
+            $this->mensaje = $validacion;
+            $this->vista = 'Vistas/mensaje.php';
+            return;
+        }
+
+        if(empty($_POST['telefono'])){
+            $_POST['telefono']=null;
+        }
+        $datos=$this->modeloInscripcion->registrarUsuario();
+        
+        if($datos===true){
+            $this->mensaje="Usuario registrado correctamente.";
             $this->vista='Vistas/mensaje.php';
-        }else{
-            if (!isset($_POST['deportes']) || empty($_POST['deportes'])) {
-                $this->mensaje = "Debes seleccionar al menos un deporte.";
-                $this->vista = 'Vistas/mensaje.php';
-                return;
-            }
-            if(!isset($_POST['condiciones'])){
-                $this->mensaje="Error: Debes aceptar las condiciones.";
-                $this->vista='Vistas/mensaje.php';
-                return;
-            }
-            if(empty($_POST['telefono'])){
-                $_POST['telefono']=null;
-            }
-            $datos=$this->modeloInscripcion->registrarUsuario();
             
-            if($datos===true){
-                $this->mensaje="Usuario registrado correctamente.";
-                $this->vista='Vistas/mensaje.php';
-                
-            }else{
-                $this->mensaje=$datos;
-                $this->vista='Vistas/mensaje.php';
-            }
+        }else{
+            $this->mensaje=$datos;
+            $this->vista='Vistas/mensaje.php';
+            return;
         }
     }
 

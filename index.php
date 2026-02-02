@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'config/configRutas.php';
 
     if(isset($_GET['c'])){
@@ -22,6 +23,10 @@
         $controlador = new $nombreControlador();
         
         $datos = $controlador->$m();
+        
+        if($controlador->mensaje!=''){
+            $mensaje = $controlador->mensaje;
+        }
         
         require_once $controlador->vista;
     }else{

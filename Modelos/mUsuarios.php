@@ -16,7 +16,6 @@ class mUsuarios extends Conexion{
             
             $SacarId = $stmt->fetch(PDO::FETCH_ASSOC);
             if($SacarId){
-                session_start();
                 $_SESSION['nombreUsuario']=$nombreUsuario;
                 $_SESSION['id'] =$SacarId['idUsuario'];
                 return true;
@@ -24,7 +23,11 @@ class mUsuarios extends Conexion{
                 return false;
             }
     }catch (PDOException $e){
-            return "Error : ".$e->getMessage();
+             if($e->getCode() == 2002){
+                 return "Error de conexión con el servidor.";
+            }else{
+                 return "Error";
+            }
         }
     }
 }

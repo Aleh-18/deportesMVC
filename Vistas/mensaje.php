@@ -11,12 +11,11 @@
         <h2>Aviso</h2>
         <p class="error-text">
             <?php 
-                echo isset($controlador->mensaje) ? $controlador->mensaje : ''; 
+                echo isset($mensaje) ? $mensaje : ''; 
             ?>
         </p>
         <a href="index.php" class="link-button-margin">Volver al Inicio</a>
-        <br>
-        <a href="javascript:history.back()" class="link-button-back">Volver Atrás</a>
+
     </div>
 </body>
 </html>

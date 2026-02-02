@@ -21,23 +21,26 @@ class cUsuarios {
     }
 
     public function volverPanelAdmin(){
-        @session_start();    
-        $this->vista='Vistas/perfilAdmin.php';
+        if(isset($_SESSION['nombreUsuario'])){
+            $this->vista='Vistas/perfilAdmin.php';
+        } else {
+             $this->mensaje="Error: Debes iniciar sesión para acceder a esta sección.";
+             $this->vista='Vistas/mensaje.php';
+        }
     }
     
     public function iniciarSesion(){
         $datos=$this->modeloUsuarios->validarUsuario();
         if($datos===true){
-            @session_start();
             $this->vista='Vistas/perfilAdmin.php';
         }else{
             $this->mensaje="Error: no tienes acceso de administrador.";
             $this->vista='Vistas/mensaje.php';
+            return;
         }
     }
 
     public function cerrarSesion(){
-        @session_start();
         session_unset();
         session_destroy();
         $this->vista='Vistas/menu.html';

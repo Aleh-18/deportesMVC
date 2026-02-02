@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="card" style="margin:20px auto;">
+    <div class="card card-centered">
     <h2>Total de inscripciones por deporte</h2>
     <ul>
         <?php

@@ -25,7 +25,7 @@ body {
     margin: 0;
 }
 
-/* Added specific padding for pages that need it */
+
 #modificarDeporteBody {
     margin-left: 100px;
     margin-top: 30px;
@@ -66,7 +66,7 @@ a:active {
     box-shadow: 8px 8px 0px var(--border-color);
     margin: 20px auto;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     text-align: center;
     position: relative;
     z-index: 10;
@@ -174,7 +174,7 @@ header h1 {
     border: var(--border-width) solid var(--border-color);
     border-radius: 12px;
     box-shadow: 6px 6px 0px var(--border-color);
-    width: 300px;
+    width: 350px;
     margin-right: 30px;
 }
 
@@ -248,4 +248,109 @@ input[type="checkbox"]:checked {
         margin-bottom: 20px;
         margin-right: 0;
     }
+}
+
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+    gap: 30px;
+    box-shadow: 4px 4px 0px #000;
+    flex-wrap: wrap;
+}
+
+li img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #000;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+li a {
+    margin: 0 !important;
+    white-space: normal;
+    text-align: center;
+}
+
+
+
+.card-centered {
+    margin: 20px auto;
+}
+
+.big-bold-text {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.checkbox-label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.checkbox-label img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 8px;
+    border: 2px solid var(--border-color);
+}
+
+.btn-submit-green {
+    width: 100%;
+    padding: 10px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    background: #666;
+    font-size: 0.9em;
+    padding: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.error-text {
+    color: red;
+    font-weight: bold;
+}
+
+.link-button-margin {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.link-button-back {
+    display: inline-block;
+    margin-top: 10px;
+    background: #666;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
 }

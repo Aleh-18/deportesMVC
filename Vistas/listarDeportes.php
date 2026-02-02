@@ -13,7 +13,7 @@
         <?php
             if(isset($datos) && is_array($datos)){
                 foreach($datos as $deporte){
-                    echo "<li>".$deporte['nombreDep']." - ".$deporte['imagen']." <a href='index.php?c=Deportes&m=vistaModificarDeporte&id=".$deporte['idDeporte']."'>Modificar</a></li>";
+                    echo "<li>".$deporte['nombreDep']." - <img src=".RUTA_IMAGENES.$deporte['imagen']." > <a href='index.php?c=Deportes&m=vistaModificarDeporte&id=".$deporte['idDeporte']."'>Modificar</a></li>";
                 }
             } else {
                 echo "<li>No hay deportes.</li>";
@@ -22,7 +22,7 @@
     </ul>
     <br><br><br>
     <h3>Aqui puedes añadir un deporte</h3>
-    <form action="index.php?c=Deportes&m=funcionagregarDeporte" method="POST" >  
+    <form action="index.php?c=Deportes&m=funcionagregarDeporte" method="POST" enctype="multipart/form-data">  
             <label>Nombre:
             <input type="text" name="nombreDep" placeholder="Introduzca el nombre del deporte a agregar"/> 
             <label>Imagen:

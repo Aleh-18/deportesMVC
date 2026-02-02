@@ -95,6 +95,7 @@ class mInscripcion extends Conexion{
                 return "Error : ".$e->getMessage();
         }
     }
+
     //metodo para ver el total de deportes inscritos por usuario
     public function totalDeportesUsuarios(){
         try{

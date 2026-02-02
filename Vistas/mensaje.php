@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div id="loginForm" style="text-align:center;">
+    <div id="loginForm" class="text-center">
         <h2>Aviso</h2>
-        <p style="color:red;font-weight:bold;">
+        <p class="error-text">
             <?php 
                 echo isset($controlador->mensaje) ? $controlador->mensaje : ''; 
             ?>
         </p>
-        <a href="index.php" style="display:inline-block;margin-top:20px;">Volver al Inicio</a>
+        <a href="index.php" class="link-button-margin">Volver al Inicio</a>
         <br>
-        <a href="javascript:history.back()" style="display:inline-block;margin-top:10px;background:#666;">Volver Atrás</a>
+        <a href="javascript:history.back()" class="link-button-back">Volver Atrás</a>
     </div>
 </body>
 </html>

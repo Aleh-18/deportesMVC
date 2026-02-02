@@ -30,8 +30,6 @@ Class cDeportes{
             $id = $_GET['id'];
             $datos = $this->modeloCrudDeportes->verDeporte($id);
             if(is_array($datos)){
-                // Simulación de imágenes disponibles en el servidor (o leer de carpeta)
-                $datos['listaImagenes'] = ['futbol.jpg', 'baloncesto.jpg', 'tenis.jpg', 'padel.jpg', 'natacion.jpg'];
                 
                 $this->vista = 'Vistas/modificarDeporte.php';
                 return $datos;
@@ -47,8 +45,8 @@ Class cDeportes{
         $nombre = $_POST['nombreDep'];
         $imagen = null;
 
-        if(isset($_POST['imagen']) && !empty($_POST['imagen'])){
-             $imagen = $_POST['imagen'];
+        if(isset($_FILES['imagen'])){
+             $imagen = $_FILES['imagen'];
         }
 
         $resultado = $this->modeloCrudDeportes->modificarDeporte($id, $nombre, $imagen);
@@ -66,8 +64,8 @@ Class cDeportes{
         $nombre = $_POST['nombreDep'];
         $imagen = null;
 
-        if(isset($_POST['imagen']) && !empty($_POST['imagen'])){
-             $imagen = $_POST['imagen'];
+        if(isset($_FILES['imagen'])){
+             $imagen = $_FILES['imagen'];
         }
 
         $this->modeloCrudDeportes->agregarDeporte($nombre,$imagen);

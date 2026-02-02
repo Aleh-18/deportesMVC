@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="card" style="margin:20px auto;">
+    <div class="card card-centered">
     <h2>Total de deportes inscritos</h2>
-    <p style="font-size:2em; font-weight:bold;"><?php echo isset($datos['TotalDeporte']) ? $datos['TotalDeporte'] : 0; ?></p>
+    <p class="big-bold-text"><?php echo isset($datos['TotalDeporte']) ? $datos['TotalDeporte'] : 0; ?></p>
     <a href="index.php?c=Usuarios&m=volverPanelAdmin">Volver al inicio</a>
     </div>
 </body>

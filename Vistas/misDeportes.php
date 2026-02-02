@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="card" style="margin:20px auto;">
+    <div class="card card-centered">
     <h2>Inscripciones realizadas</h2>
     <ul><?php
         if(isset($datos) && is_array($datos)){

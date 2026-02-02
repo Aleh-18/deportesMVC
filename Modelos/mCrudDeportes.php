@@ -36,10 +36,13 @@
     // Modificar deporte
     public function modificarDeporte($id, $nombre, $imagen = null){
         try{
-            if($imagen){
+            if($imagen['name'] != ""){
+                $nombreImagen = $imagen['name'];
+                move_uploaded_file($imagen['tmp_name'], "imagenes/" . $nombreImagen);
+
                 $sql="UPDATE Deportes SET nombreDep = :nombre, imagen = :imagen WHERE idDeporte = :id";
                 $stmt=$this->conexion->prepare($sql);
-                $stmt->bindParam(':imagen', $imagen);
+                $stmt->bindParam(':imagen', $nombreImagen);
             } else {
                 $sql="UPDATE Deportes SET nombreDep = :nombre WHERE idDeporte = :id";
                 $stmt=$this->conexion->prepare($sql);
@@ -57,10 +60,16 @@
     //Agregar deporte
     public function agregarDeporte($nombre, $imagen = null){
         try{
+            $nombreImagen = null;
+            if($imagen['name'] != ""){
+                $nombreImagen = $imagen['name'];
+                move_uploaded_file($imagen['tmp_name'], "imagenes/" . $nombreImagen);
+            }
+
             $sql="INSERT INTO Deportes (nombreDep, imagen) VALUES (:nombre, :imagen)";
             $stmt=$this->conexion->prepare($sql);
             $stmt->bindParam(':nombre', $nombre);
-            $stmt->bindParam(':imagen', $imagen);
+            $stmt->bindParam(':imagen', $nombreImagen);
             return $stmt->execute();
         }catch (PDOException $e){
             return "Error : ".$e->getMessage();
